@@ -10,13 +10,9 @@ param excgroup string = ''
 
 //Policy Parameters
 param listOfAllowedLocations array = [
-  'uksouth'
-  'ukwest'
-  'northeurope'
-  'westeurope'
-  'australiaeast'
-  'australiaeast'
-  'australiasoutheast'
+  'norwayeast'
+  'norway'
+  'norwaywest'
 ]
 
 param listOfAllowedSKUs array = [
@@ -50,12 +46,12 @@ param spokespace string
 param spokesnname string
 param spokesnspace string
 param vpnsubnet string
-param vpngwpipname string
-param vpngwname string
-param localnetworkgwname string
-param addressprefixes string
-param gwipaddress string
-param bgppeeringpddress string
+//param vpngwpipname string
+//param vpngwname string
+//param localnetworkgwname string
+//param addressprefixes string
+//param gwipaddress string
+//param bgppeeringpddress string
 param devicesubnet string
 
 
@@ -67,14 +63,14 @@ param monitoringrg string
 
 
 //VM Parameters
-param serverrg string
-param adminUserName string
-@secure()
-param adminPassword string
-param dnsLabelPrefix string
-param storageAccountName string
-param vmName string
-param networkSecurityGroupName string
+//param serverrg string
+//param adminUserName string
+//@secure()
+//param adminPassword string
+//param dnsLabelPrefix string
+//param storageAccountName string
+//param vmName string
+//param networkSecurityGroupName string
 
 
 
@@ -173,21 +169,21 @@ module hubspoke './infra.bicep' = {
     spokespace: spokespace
     spokesnname: spokesnname
     spokesnspace: spokesnspace
-    serverrg: serverrg
-    adminUserName: adminUserName
-    adminPassword: adminPassword
-    dnsLabelPrefix: dnsLabelPrefix
-    storageAccountName: storageAccountName
-    vmName: vmName
+    //serverrg: serverrg
+    //adminUserName: adminUserName
+    //adminPassword: adminPassword
+    //dnsLabelPrefix: dnsLabelPrefix
+    //storageAccountName: storageAccountName
+    //vmName: vmName
     vpnsubnet: vpnsubnet
-    networkSecurityGroupName: networkSecurityGroupName
-    vpngwpipname: vpngwpipname
-    vpngwname : vpngwname
-    location: region
-    localnetworkgwname: localnetworkgwname 
-    addressprefixes: addressprefixes
-    gwipaddress: gwipaddress
-    bgppeeringpddress: bgppeeringpddress
+    //networkSecurityGroupName: networkSecurityGroupName
+    //vpngwpipname: vpngwpipname
+    //vpngwname : vpngwname
+    //location: region
+    //localnetworkgwname: localnetworkgwname 
+    //addressprefixes: addressprefixes
+    //gwipaddress: gwipaddress
+    //bgppeeringpddress: bgppeeringpddress
     devicesubnet: devicesubnet
   }
 }

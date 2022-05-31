@@ -10,24 +10,24 @@ param spokename string
 param spokespace string
 param spokesnname string
 param spokesnspace string
-param serverrg string
-param adminUserName string
+//param serverrg string
+//param adminUserName string
 param vpnsubnet string
 param devicesubnet string
 
-@secure()
-param adminPassword string
-param dnsLabelPrefix string
-param storageAccountName string
-param vmName string
-param networkSecurityGroupName string
-param vpngwpipname string
-param vpngwname string
-param location string
-param localnetworkgwname string
-param addressprefixes string
-param gwipaddress string
-param bgppeeringpddress string
+//@secure()
+//param adminPassword string
+//param dnsLabelPrefix string
+//param storageAccountName string
+//param vmName string
+//param networkSecurityGroupName string
+//param vpngwpipname string
+//param vpngwname string
+//param location string
+//param localnetworkgwname string
+//param addressprefixes string
+//param gwipaddress string
+//param bgppeeringpddress string
 
 resource hubrg 'Microsoft.Resources/resourceGroups@2020-06-01' = {
   name: hubrgname
@@ -39,10 +39,12 @@ resource spokerg 'Microsoft.Resources/resourceGroups@2020-06-01' = {
   location: region
 }
 
+/*
 resource infrarg 'Microsoft.Resources/resourceGroups@2020-06-01' = {
   name: serverrg
   location: region
 }
+*/
 
 module hubVNET './modules/vnet.bicep' = {
   name: hubname
@@ -96,6 +98,7 @@ module spokeVNET './modules/vnetspoke.bicep' = {
   }
 }
 
+/*
 module Hubfwl './modules/fwl.bicep' = {
   name: 'hub-fwl'
   scope: hubrg
@@ -104,6 +107,7 @@ module Hubfwl './modules/fwl.bicep' = {
     hubId: hubVNET.outputs.id
   }
 }
+*/
 
 module HubToSpokePeering './modules/peering.bicep' = {
   name: 'hub-to-spoke-peering'
@@ -134,7 +138,7 @@ module SpokeToHubPeering './modules/peering.bicep' = {
 }
 
 
-
+/*
 module vpn './modules/vpngw.bicep' = {
   name: 'vpn'
   scope: hubrg
@@ -149,17 +153,17 @@ module vpn './modules/vpngw.bicep' = {
     subnetref: hubVNET.outputs.subnet2
   }
 }
-
+*/
 
 
 output spokevnet string = spokeVNET.outputs.name
-output serverrg object = infrarg
+//output serverrg object = infrarg
 
 
 
 
 //VM
-
+/*
 module infra './modules/az-vm.bicep' = {
   name: 'infra'
   scope: infrarg
@@ -178,6 +182,6 @@ module infra './modules/az-vm.bicep' = {
     vn: spokeVNET.outputs.id
   }
 }
-
+*/
 
 
